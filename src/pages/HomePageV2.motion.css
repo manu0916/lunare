@@ -1,17 +1,41 @@
 .route-eclipse {
   position: fixed;
   z-index: calc(var(--z-overlay) + 20);
-  left: 50%;
-  top: 50%;
-  width: 145vmax;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  inset: -18vh 0 0;
+  height: 118vh;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0 / 15% 15% 0 0;
   pointer-events: none;
   opacity: 0;
-  transform: translate(-50%, -50%) scale(.08);
-  transform-origin: center;
-  background: radial-gradient(circle at 50% 46%, var(--color-moon) 0 8%, var(--color-silver) 8.5% 9%, var(--color-deep-blue) 9.5% 25%, var(--color-night) 26% 100%);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 0 90px rgba(74,107,255,.3);
+  background: linear-gradient(180deg, #18374b 0, var(--color-deep-blue) 18%, var(--color-night) 56%);
+  contain: paint;
+  backface-visibility: hidden;
+}
+
+.route-eclipse::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(62vw, 680px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 50%;
+  translate: -50% -52%;
+  background: radial-gradient(circle, rgba(201,155,82,.16) 0 1%, transparent 1.5% 67%, rgba(255,255,255,.1) 67.4% 67.7%, transparent 68.2%);
+}
+
+.route-eclipse::after {
+  content: "LUNARE";
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  translate: -50% 0;
+  color: rgba(255,255,255,.72);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: .42em;
+  text-indent: .42em;
 }
 
 @media (prefers-reduced-motion: reduce) {

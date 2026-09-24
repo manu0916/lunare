@@ -22,6 +22,7 @@ export const motionTokens = {
 
 export const motionEasings = {
   out: 'outQuad',
+  smooth: 'inOutQuad',
   expressive: 'outExpo',
   linear: 'linear',
 } as const;

@@ -11,6 +11,8 @@ import { useOrderStore } from '../store/useOrderStore';
 import styles from './HomePageV2.module.css';
 import './HomePageV2.motion.css';
 
+const preloadMenuPage = () => import('./MenuPageV2');
+
 export function HomePageV2() {
   const navigate = useNavigate();
   const pageRef = useRef<HTMLDivElement>(null);
@@ -23,6 +25,12 @@ export function HomePageV2() {
   const reduced = useReducedMotion();
   const favorites = products.filter((product) => product.featured && product.available).slice(0, 6);
   useSectionReveals(pageRef);
+
+  useEffect(() => {
+    const preload = () => { void preloadMenuPage().catch(() => undefined); };
+    const timer = window.setTimeout(preload, 140);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const interceptMenuNavigation = (event: MouseEvent) => {
@@ -39,14 +47,14 @@ export function HomePageV2() {
       }
       if (transitioning.current) return;
       transitioning.current = true;
+      void preloadMenuPage().catch(() => undefined);
       const animation = animateMotion(transitionRef.current, {
-        opacity: [0, 1],
-        scale: [0.08, 1.18],
-        rotate: [-8, 0],
+        opacity: [0.78, 1],
+        translateY: ['108%', '0%'],
         duration: motionTokens.standard,
-        ease: motionEasings.expressive,
+        ease: motionEasings.smooth,
         onComplete: () => navigate(route),
-      });
+      }, 'transform, opacity');
       transitionMotion.current = animation;
       if (!animation) navigate(route);
     };
