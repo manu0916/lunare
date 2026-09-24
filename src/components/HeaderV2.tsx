@@ -78,7 +78,7 @@ export function HeaderV2() {
       <span>LUNARE<small>Premium Japanese Food</small></span>
     </Link>
     <nav id="mobile-navigation" ref={navRef} className={`${styles.nav} ${mobileOpen ? styles.open : ''}`} aria-label="Navegação principal">
-      <Link to="/#experiencia" onClick={() => setMobileOpen(false)}>Experiência</Link>
+      <Link to="/#destaques" onClick={() => setMobileOpen(false)}>A jornada</Link>
       <NavLink to="/cardapio" onClick={() => setMobileOpen(false)}>Cardápio</NavLink>
       <button type="button" onClick={() => { setInfoOpen(true); setMobileOpen(false); }}><Info size={16} /> Informações</button>
     </nav>

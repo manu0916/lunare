@@ -2,6 +2,7 @@ import {
   animate,
   createAnimatable,
   createTimeline,
+  onScroll,
   stagger,
   type AnimatableObject,
   type AnimatableParams,
@@ -10,6 +11,9 @@ import {
   type TargetsParam,
   type Timeline,
   type TimelineParams,
+  type Revertible,
+  type ScrollObserver,
+  type ScrollObserverParams,
 } from 'animejs';
 
 export const motionTokens = {
@@ -27,7 +31,7 @@ export const motionEasings = {
   linear: 'linear',
 } as const;
 
-export type MotionInstance = JSAnimation | Timeline | AnimatableObject;
+export type MotionInstance = Revertible;
 
 const asElements = (targets: TargetsParam): Element[] => {
   if (typeof targets === 'string') return Array.from(document.querySelectorAll(targets));
@@ -101,6 +105,14 @@ export function createMotionAnimatable(targets: TargetsParam, parameters: Animat
     return createAnimatable(targets, parameters);
   } catch {
     settleMotionTargets(targets);
+    return null;
+  }
+}
+
+export function createMotionScroll(parameters: ScrollObserverParams): ScrollObserver | null {
+  try {
+    return onScroll(parameters);
+  } catch {
     return null;
   }
 }
