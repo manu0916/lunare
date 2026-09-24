@@ -108,6 +108,25 @@ Sem essa variável, o navegador usa a origem atual. A remoção de `noindex,nofo
 
 O repositório inclui `vercel.json` com o preset do Vite e fallback de SPA para que acessos diretos a `/cardapio`, `/checkout` e `/pedido-demo/sucesso` abram o React Router corretamente. A Vercel pode usar o comando `npm run build` e o diretório de saída `dist`, detectados pelo preset. A pasta de evidências visuais `qa/` é mantida no projeto, mas excluída do pacote de deploy por `.vercelignore`.
 
+### Publicação no Cloudflare Workers
+
+A configuração principal recomendada para esta apresentação está em `wrangler.jsonc`. Ela publica somente os arquivos estáticos gerados em `dist` e usa `not_found_handling: "single-page-application"`, garantindo que acessos diretos às rotas do React Router retornem `index.html`.
+
+Para publicar localmente após autenticar o Wrangler:
+
+```bash
+npm run deploy:workers
+```
+
+No Workers Builds conectado ao GitHub, use:
+
+- branch de produção: `main`;
+- comando de build: `npm run build`;
+- comando de deploy: `npx wrangler deploy`;
+- nome do Worker: `lunare`, igual ao campo `name` de `wrangler.jsonc`.
+
+Esta configuração não contém script Worker nem backend. Os pedidos continuam simulados no navegador e somente assets estáticos são publicados.
+
 ## Conteúdo, assets e licenças
 
 As fotografias, vídeos e o emblema foram fornecidos pelo usuário para esta demonstração. As variantes WebP em `public/images/food` são derivados técnicos desses arquivos, sem alteração de titularidade. As fotos em `public/images/menu` vieram da página do Takeat salva e entregue pelo usuário; ficam locais no projeto e não usam hotlink. Autorização comercial, associação final de cada foto ao produto e versão definitiva da marca continuam pendentes.
