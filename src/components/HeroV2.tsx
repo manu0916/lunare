@@ -46,10 +46,10 @@ export function HeroV2() {
     const revealTargets = selectAll<HTMLElement>(scene, '[data-hero-reveal]');
     const intro = scene.querySelector<HTMLElement>('[data-brand-intro]');
     const animatedTargets = selectAll<HTMLElement | SVGElement>(visual, [
-      '[data-scale]', '[data-clean-surface]', '[data-fish-core]', '[data-fish-tail]', '[data-fish-detail]',
+      '[data-scale]', '[data-clean-surface]', '[data-fish-render]', '[data-fish-core]', '[data-fish-tail]', '[data-fish-detail]',
       '[data-cut-line]', '[data-cut-glow]', '[data-fillet-plane]', '[data-fillet-stripes]', '[data-slice]',
       '[data-rice-base]', '[data-rice-grain]', '[data-glaze]', '[data-final-mark]', '[data-tech-ring]',
-      '[data-tech-line]', '[data-stage-label]', '[data-caption]', '[data-orbit-frame]', 'svg',
+      '[data-tech-line]', '[data-orbit-frame]', 'svg',
     ].join(','));
 
     if (reduced) {
@@ -78,8 +78,6 @@ export function HeroV2() {
     const cutLines = selectAll<SVGElement>(visual, '[data-cut-line]');
     const filletPlanes = selectAll<SVGElement>(visual, '[data-fillet-plane]');
     const riceGrains = selectAll<SVGElement>(visual, '[data-rice-grain]');
-    const captions = selectAll<HTMLElement>(visual, '[data-caption]');
-    const captionNumber = visual.querySelector<HTMLElement>('[data-caption-number]');
     const artwork = visual.querySelector<SVGElement>('svg');
     const menuCta = scene.querySelector<HTMLElement>('[data-menu-cta]');
     const menuArrow = scene.querySelector<SVGElement>('[data-menu-arrow]');
@@ -87,33 +85,34 @@ export function HeroV2() {
     try {
       timeline
         ?.add(techRings, { opacity: [.38, .62], rotate: [0, 7], duration: 160 }, 0)
+        .add(visual.querySelectorAll('[data-fish-core],[data-fish-tail],[data-fish-detail]'), {
+          opacity: [0, .22],
+          duration: 130,
+        }, 175)
         .add(visual.querySelectorAll('[data-clean-surface]'), {
           opacity: [0, .9],
           clipPath: ['inset(0 100% 0 0)', 'inset(0 0% 0 0)'],
           duration: 170,
         }, 145)
         .add(scales, {
-          opacity: [1, 0],
+          opacity: [0, .35, 0],
           translateY: [0, -34],
           translateX: [0, 9],
           rotate: [0, 14],
           scale: [1, .35],
-          delay: stagger(7, { from: 'last' }),
-          duration: 150,
+          delay: stagger(1.1, { from: 'last' }),
+          duration: 125,
         }, 165)
-        .add(visual.querySelectorAll('[data-stage-label="origin"]'), { opacity: [1, 0], translateY: [0, -7], duration: 70 }, 172)
-        .add(visual.querySelectorAll('[data-stage-label="prepare"]'), { opacity: [0, 1], translateY: [8, 0], duration: 90 }, 190)
-        .add(captions[0] ?? visual, { opacity: [1, 0], translateY: [0, -5], duration: 55 }, 185)
-        .add(captions[1] ?? visual, { opacity: [0, 1], translateY: [6, 0], duration: 80 }, 205)
         .add(techLines, { strokeDashoffset: [1, 0], opacity: [.2, .75], duration: 180 }, 260)
         .add(cutLines, { strokeDashoffset: [1, 0], opacity: [0, 1], delay: stagger(22), duration: 170 }, 320)
         .add(visual.querySelectorAll('[data-cut-glow]'), { opacity: [0, .75, 0], translateX: [-18, 16], duration: 170 }, 350)
-        .add(visual.querySelectorAll('[data-stage-label="prepare"]'), { opacity: [1, 0], duration: 55 }, 350)
-        .add(visual.querySelectorAll('[data-stage-label="cut"]'), { opacity: [0, 1], translateX: [8, 0], duration: 85 }, 370)
-        .add(captions[1] ?? visual, { opacity: [1, 0], duration: 50 }, 360)
-        .add(captions[2] ?? visual, { opacity: [0, 1], translateY: [6, 0], duration: 80 }, 380)
-        .add(visual.querySelectorAll('[data-fish-tail],[data-fish-detail]'), {
+        .add(visual.querySelectorAll('[data-fish-render]'), {
           opacity: [1, 0],
+          scaleX: [1, .91],
+          duration: 190,
+        }, 365)
+        .add(visual.querySelectorAll('[data-fish-tail],[data-fish-detail]'), {
+          opacity: [.22, 0],
           translateX: [0, -28],
           scale: [1, .92],
           duration: 150,
@@ -131,8 +130,13 @@ export function HeroV2() {
           translateY: stagger(15, { from: 'center' }),
           duration: 130,
         }, 450)
-        .add(visual.querySelectorAll('[data-fish-core],[data-clean-surface]'), {
-          opacity: [1, 0],
+        .add(visual.querySelectorAll('[data-fish-core]'), {
+          opacity: [.22, 0],
+          scaleX: [1, .8],
+          duration: 145,
+        }, 430)
+        .add(visual.querySelectorAll('[data-clean-surface]'), {
+          opacity: [.9, 0],
           scaleX: [1, .8],
           duration: 145,
         }, 430)
@@ -146,10 +150,6 @@ export function HeroV2() {
           scale: [.76, .84],
           duration: 150,
         }, 525)
-        .add(visual.querySelectorAll('[data-stage-label="cut"]'), { opacity: [1, 0], duration: 55 }, 535)
-        .add(visual.querySelectorAll('[data-stage-label="balance"]'), { opacity: [0, 1], translateY: [8, 0], duration: 85 }, 555)
-        .add(captions[2] ?? visual, { opacity: [1, 0], duration: 50 }, 540)
-        .add(captions[3] ?? visual, { opacity: [0, 1], translateY: [6, 0], duration: 80 }, 560)
         .add(riceGrains, {
           opacity: [0, 1],
           translateY: [58, 0],
@@ -166,10 +166,6 @@ export function HeroV2() {
         }, 620)
         .add(filletPlanes, { opacity: [1, 0], translateX: [10, -18], duration: 120 }, 610)
         .add(visual.querySelectorAll('[data-fillet-stripes]'), { opacity: [1, 0], duration: 80 }, 620)
-        .add(visual.querySelectorAll('[data-stage-label="balance"]'), { opacity: [1, 0], duration: 55 }, 690)
-        .add(visual.querySelectorAll('[data-stage-label="assembly"]'), { opacity: [0, 1], translateY: [8, 0], duration: 85 }, 705)
-        .add(captions[3] ?? visual, { opacity: [1, 0], duration: 50 }, 695)
-        .add(captions[4] ?? visual, { opacity: [0, 1], translateY: [6, 0], duration: 80 }, 715)
         .add(visual.querySelectorAll('[data-slice]'), {
           translateX: [48, 0],
           translateY: [-62, 0],
@@ -183,17 +179,12 @@ export function HeroV2() {
         .add(riceGrains, { translateY: [0, 5], scale: [1, .94], duration: 175 }, 710)
         .add(artwork ?? visual, { rotate: [1.25, -.65], scale: [1.025, 1.045], duration: 190 }, 690)
         .add(visual.querySelectorAll('[data-glaze]'), { opacity: [0, 1, .7], strokeDashoffset: [1, 0], duration: 125 }, 825)
-        .add(visual.querySelectorAll('[data-stage-label="assembly"]'), { opacity: [1, 0], duration: 50 }, 860)
-        .add(visual.querySelectorAll('[data-stage-label="finish"]'), { opacity: [0, 1], translateX: [-8, 0], duration: 85 }, 875)
-        .add(captions[4] ?? visual, { opacity: [1, 0], duration: 45 }, 865)
-        .add(captions[5] ?? visual, { opacity: [0, 1], translateY: [6, 0], duration: 75 }, 882)
         .add(visual.querySelectorAll('[data-final-mark]'), { opacity: [0, .8], scale: [.96, 1], duration: 95 }, 870)
         .add(visual.querySelectorAll('[data-orbit-frame]'), { opacity: [1, .55], scale: [1, 1.08], duration: 120 }, 875)
         .add(techRings, { opacity: [.62, .2], scale: [1, 1.06], duration: 120 }, 875)
         .add(artwork ?? visual, { rotate: [-.65, 0], scale: [1.045, 1.085], translateY: [0, -5], duration: 125 }, 875)
         .add(menuCta ?? scene, { scale: [1, 1.035, 1], duration: 115, ease: motionEasings.out }, 885)
-        .add(menuArrow ?? scene, { translateX: [0, 5, 0], translateY: [0, -3, 0], duration: 115 }, 885)
-        .add(captionNumber ?? visual, { opacity: [1, .35, 1], duration: 115 }, 885);
+        .add(menuArrow ?? scene, { translateX: [0, 5, 0], translateY: [0, -3, 0], duration: 115 }, 885);
     } catch {
       settleMotionTargets(animatedTargets);
     }
@@ -318,7 +309,6 @@ export function HeroV2() {
         <a className={styles.scroll} href="#destaques" aria-label="Avançar para a montagem do nigiri">
           <ArrowDown size={17} /> Role para transformar
         </a>
-        <div className={styles.progress} aria-hidden="true"><i /><span>origem</span><span>preparo</span><span>corte</span><span>montagem</span><span>final</span></div>
       </div>
     </section>
   );

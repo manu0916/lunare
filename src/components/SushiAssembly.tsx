@@ -1,11 +1,13 @@
 import { useId } from 'react';
 import styles from './SushiAssembly.module.css';
 
-const scales = [
-  [174, 285], [205, 268], [236, 257], [268, 251], [300, 249], [332, 251], [364, 257],
-  [191, 309], [223, 294], [255, 285], [287, 281], [319, 282], [351, 287], [383, 298],
-  [211, 333], [243, 321], [275, 315], [307, 315], [339, 320], [371, 330], [403, 342],
-] as const;
+const scales = Array.from({ length: 6 }, (_, row) =>
+  Array.from({ length: 11 }, (_, column) => [183 + column * 26 + (row % 2) * 13, 264 + row * 17] as const),
+).flat();
+
+const backSpots = Array.from({ length: 5 }, (_, row) =>
+  Array.from({ length: 13 }, (_, column) => [190 + column * 21 + (row % 2) * 9, 242 + row * 10] as const),
+).flat();
 
 const riceGrains = [
   [254, 366, -14], [284, 359, 8], [316, 361, -5], [350, 357, 12], [384, 361, -9], [417, 366, 14],
@@ -19,6 +21,11 @@ export function SushiAssembly() {
   const fishClip = `${uid}-fish`;
   const salmonGradient = `${uid}-salmon`;
   const riceGradient = `${uid}-rice`;
+  const skinGradient = `${uid}-skin`;
+  const flankGradient = `${uid}-flank`;
+  const finGradient = `${uid}-fin`;
+  const scalePattern = `${uid}-scales`;
+  const fishBody = 'M144 308C169 265 250 231 346 225c77-5 145 10 190 38 20 13 34 29 43 47-9 18-23 34-43 46-45 29-113 44-190 39-96-6-177-40-202-83-7-12-7-18 0-4Z';
   const shadow = `${uid}-shadow`;
 
   return (
@@ -41,8 +48,31 @@ export function SushiAssembly() {
             <stop offset="0" stopColor="#fffdf7" />
             <stop offset="1" stopColor="#d9d7cf" />
           </linearGradient>
+          <linearGradient id={skinGradient} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0" stopColor="#102b3b" />
+            <stop offset=".25" stopColor="#315268" />
+            <stop offset=".43" stopColor="#6a8794" />
+            <stop offset=".59" stopColor="#8fa3a4" />
+            <stop offset=".77" stopColor="#d1d9d3" />
+            <stop offset="1" stopColor="#f2e6d9" />
+          </linearGradient>
+          <linearGradient id={flankGradient} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0" stopColor="#9f5155" stopOpacity="0" />
+            <stop offset=".38" stopColor="#dc8a78" stopOpacity=".65" />
+            <stop offset=".56" stopColor="#f2a78a" stopOpacity=".82" />
+            <stop offset="1" stopColor="#b66c60" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id={finGradient} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0" stopColor="#53768a" />
+            <stop offset=".55" stopColor="#1d4258" />
+            <stop offset="1" stopColor="#0b2638" />
+          </linearGradient>
+          <pattern id={scalePattern} width="24" height="17" patternUnits="userSpaceOnUse" patternTransform="skewX(-12)">
+            <path d="M-5 3Q4 16 12 3M7 3q9 13 18 0" fill="none" stroke="#e5e8e0" strokeOpacity=".32" strokeWidth=".8" />
+            <path d="M3 6q3 4 6 0M15 6q3 4 6 0" fill="none" stroke="#fff7e8" strokeOpacity=".24" strokeWidth=".65" />
+          </pattern>
           <clipPath id={fishClip}>
-            <path d="M133 311C176 231 339 211 485 253c40 12 70 31 91 58-21 27-51 47-91 59-146 42-309 21-352-59Z" />
+            <path d={fishBody} />
           </clipPath>
           <filter id={shadow} x="-30%" y="-30%" width="160%" height="180%">
             <feDropShadow dx="0" dy="24" stdDeviation="20" floodColor="#020912" floodOpacity=".5" />
@@ -57,30 +87,61 @@ export function SushiAssembly() {
         </g>
 
         <g className={styles.fish} filter={`url(#${shadow})`}>
+          <image data-fish-render href="/media/salmon-lunare.webp" x="45" y="174" width="560" height="320" preserveAspectRatio="none" />
           <g data-fish-tail>
-            <path className={styles.tail} d="M143 306C101 274 77 231 70 186c50 14 83 42 104 76-4 17-15 33-31 44Z" />
-            <path className={styles.tail} d="M143 316C100 347 77 390 70 435c50-14 83-42 104-77-5-16-15-31-31-42Z" />
+            <path className={styles.tail} style={{ fill: `url(#${finGradient})` }} d="M157 306C117 287 80 247 58 192c49 13 87 38 123 80l-7 36Z" />
+            <path className={styles.tail} style={{ fill: `url(#${finGradient})` }} d="M157 315C117 334 80 374 58 429c49-13 87-38 123-80l-7-36Z" />
+            <g className={styles.finRays}>
+              <path d="M161 294C123 265 96 232 69 205M157 296C117 274 84 253 69 224M154 300C118 284 89 278 74 255M158 326C123 354 96 389 69 416M155 324C116 346 84 367 69 398M153 320C118 336 89 342 74 368" />
+            </g>
+            <path className={styles.tailNotch} d="M160 306c-20 1-33 3-42 5 10 2 23 4 42 5" />
           </g>
           <g data-fish-core>
-            <path className={styles.fishBody} style={{ fill: `url(#${salmonGradient})` }} d="M133 311C176 231 339 211 485 253c40 12 70 31 91 58-21 27-51 47-91 59-146 42-309 21-352-59Z" />
-            <g clipPath={`url(#${fishClip})`} className={styles.fishTexture}>
-              <path d="M135 278c93 23 191 17 293-19" />
-              <path d="M130 305c112 24 222 22 338-27" />
-              <path d="M137 334c109 14 220 2 334-34" />
-              <path d="M157 356c103 4 200-10 294-38" />
+            <path className={styles.dorsalFin} style={{ fill: `url(#${finGradient})` }} d="M285 235c21-30 43-51 68-65 4 24 13 43 31 62l-3 19-95 6Z" />
+            <path className={styles.adiposeFin} d="M214 258c5-24 16-39 35-46 1 18 8 31 19 39l-20 13Z" />
+            <path className={styles.analFin} style={{ fill: `url(#${finGradient})` }} d="M218 354c-8 22-23 44-46 59 31-2 60-16 87-40Z" />
+            <path className={styles.pelvicFin} style={{ fill: `url(#${finGradient})` }} d="M306 376c-7 20-9 38-2 55 26-13 47-28 58-48Z" />
+            <path className={styles.fishBody} style={{ fill: `url(#${skinGradient})` }} d={fishBody} />
+            <g clipPath={`url(#${fishClip})`}>
+              <path className={styles.darkBack} d="M132 264c79-67 233-84 354-34 50 20 76 45 93 78-89-45-231-66-447-44Z" />
+              <path className={styles.lateralBand} style={{ fill: `url(#${flankGradient})` }} d="M137 281c122-40 293-47 447 22l-5 49c-143-60-311-50-442-17Z" />
+              <path className={styles.silverBelly} d="M140 343c97 20 235 23 420-16-31 51-112 81-214 75-100-6-181-26-206-59Z" />
+              <path className={styles.scaleMesh} style={{ fill: `url(#${scalePattern})` }} d={fishBody} />
+              <g className={styles.backSpots}>
+                {backSpots.map(([x, y], index) => (
+                  <ellipse key={`${x}-${y}`} cx={x} cy={y} rx={index % 5 === 0 ? 2.9 : 1.6} ry={index % 4 === 0 ? 1.5 : 1} />
+                ))}
+              </g>
+              <g className={styles.fishTexture}>
+                <path d="M155 291c97-39 196-43 297-22M152 310c110-27 210-25 309-6M164 333c100-9 184-7 271 2M174 352c90 7 175 5 260-7" />
+                <path d="M176 277c80-36 165-41 256-30M172 365c86 24 177 25 262 5" />
+              </g>
+              <path className={styles.lateralLine} d="M153 309c112-10 204-8 291 4 31 4 61 2 93-2" />
             </g>
           </g>
           <path className={styles.cleanSurface} style={{ fill: `url(#${salmonGradient})` }} data-clean-surface d="M146 311C195 250 339 235 468 269c32 8 59 22 80 42-21 20-48 34-80 43-129 33-273 18-322-43Z" />
-          <g className={styles.scales}>
+          <g className={styles.scales} clipPath={`url(#${fishClip})`}>
             {scales.map(([x, y], index) => (
-              <path key={`${x}-${y}`} data-scale data-scale-index={index} d={`M${x} ${y}q11-9 22 0q-11 14-22 0Z`} />
+              <path key={`${x}-${y}`} data-scale data-scale-index={index} d={`M${x} ${y}q8-6 16 0q-8 8-16 0Z`} />
             ))}
           </g>
           <g className={styles.fishDetails} data-fish-detail>
-            <path d="M469 257c-22 18-31 36-29 54 0 20 10 38 31 54" />
-            <circle cx="500" cy="292" r="5" />
-            <path d="M522 326c14-8 27-13 40-15-13-3-26-8-40-16" />
-            <path d="M294 238c23-30 49-47 76-53-6 35-22 57-48 67M289 374c20 27 45 44 75 50-6-31-20-51-43-63" />
+            <path className={styles.headPlate} d="M459 249c24 12 48 28 65 51 10 14 15 30 11 48-26 18-58 30-90 37 19-17 28-38 26-66-1-26-5-47-12-70Z" />
+            <path className={styles.gillEdge} d="M459 252c15 21 22 45 20 69-1 23-12 43-30 59M480 268c11 18 16 35 15 53-1 20-9 37-23 51" />
+            <path className={styles.cheek} d="M491 301c17-8 31-8 42 0M490 339c16 4 31 4 45-3" />
+            <path className={styles.jaw} d="M531 342c17-8 33-18 48-32-18-1-29-3-41-6M535 344c8 2 20 2 29-2" />
+            <path className={styles.mouth} d="M546 316c11 1 21-1 31-6" />
+            <path className={styles.fin} style={{ fill: `url(#${finGradient})` }} d="M451 329c-14 16-24 34-30 56-8 24-8 45-3 62 20-11 37-27 49-46 12-18 16-37 15-57Z" />
+            <path className={styles.fin} style={{ fill: `url(#${finGradient})` }} d="M332 246c19-24 31-48 22-67 12 17 24 35 31 55" />
+            <g className={styles.finRays}>
+              <path d="M464 350c-20 30-34 61-42 88M468 352c-12 27-23 50-35 67M471 353c-6 21-12 39-20 54M292 237c20-25 38-44 57-60M310 232c15-21 28-36 43-48M333 229c9-16 15-29 20-43M312 385c0 15 1 29 3 39M329 388c-1 12-2 23-5 30" />
+            </g>
+            <path className={styles.finHighlight} d="M422 439c11-39 27-68 47-87M292 236c19-27 38-46 59-60" />
+            <ellipse className={styles.eyeRim} cx="526" cy="286" rx="12" ry="10" />
+            <circle className={styles.eye} cx="527" cy="286" r="6.2" />
+            <circle className={styles.eyeGlint} cx="529" cy="283" r="2" />
+            <path className={styles.brow} d="M508 271c12-9 25-11 37-5" />
+            <path className={styles.nostril} d="M554 297l4-2" />
           </g>
         </g>
 
@@ -118,30 +179,8 @@ export function SushiAssembly() {
         <path className={styles.glaze} data-glaze pathLength="1" d="M246 291c58-30 126-29 198 3" aria-hidden="true" />
         <g className={styles.finalMarks} data-final-mark aria-hidden="true">
           <path d="M176 267v-24h24M516 267v-24h-24M176 455v24h24M516 455v24h-24" />
-          <text x="510" y="465">06</text>
         </g>
       </svg>
-
-      <div className={styles.labels} aria-hidden="true">
-        <div className={styles.labelOrigin} data-stage-label="origin"><span>01</span><b>origem</b><i /></div>
-        <div className={styles.labelPrepare} data-stage-label="prepare"><span>02</span><b>preparo</b><i /></div>
-        <div className={styles.labelCut} data-stage-label="cut"><span>03</span><b>corte</b><i /></div>
-        <div className={styles.labelBalance} data-stage-label="balance"><span>04</span><b>equilíbrio</b><i /></div>
-        <div className={styles.labelAssembly} data-stage-label="assembly"><span>05</span><b>montagem</b><i /></div>
-        <div className={styles.labelFinish} data-stage-label="finish"><span>06</span><b>acabamento</b><i /></div>
-      </div>
-
-      <div className={styles.caption} aria-hidden="true">
-        <span data-caption-number>01</span>
-        <div>
-          <p data-caption="origin">Da origem ao gesto.</p>
-          <p data-caption="prepare">Textura, precisão e preparo.</p>
-          <p data-caption="cut">O corte revela a forma.</p>
-          <p data-caption="balance">Equilíbrio em cada porção.</p>
-          <p data-caption="assembly">Forma, arroz e intenção.</p>
-          <p data-caption="finish">Precisão em cada etapa.</p>
-        </div>
-      </div>
     </div>
   );
 }
