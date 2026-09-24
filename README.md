@@ -62,6 +62,7 @@ src/
 public/
   icons/             favicon local
   images/food/       imagens WebP responsivas
+  images/menu/       fotos locais associadas ao cardápio salvo do Takeat
   media/             arquivos originais fornecidos para o protótipo
 ```
 
@@ -104,11 +105,12 @@ Sem essa variável, o navegador usa a origem atual. A remoção de `noindex,nofo
 
 ## Conteúdo, assets e licenças
 
-As fotografias, vídeos e o emblema foram fornecidos pelo usuário para esta demonstração. As variantes WebP em `public/images/food` são derivados técnicos desses arquivos, sem alteração de titularidade. Autorização comercial, associação de cada foto ao produto e versão definitiva da marca continuam pendentes.
+As fotografias, vídeos e o emblema foram fornecidos pelo usuário para esta demonstração. As variantes WebP em `public/images/food` são derivados técnicos desses arquivos, sem alteração de titularidade. As fotos em `public/images/menu` vieram da página do Takeat salva e entregue pelo usuário; ficam locais no projeto e não usam hotlink. Autorização comercial, associação final de cada foto ao produto e versão definitiva da marca continuam pendentes.
 
 Consulte:
 
 - [`ASSETS.md`](./ASSETS.md) para o inventário de mídia;
+- [`MENU_IMAGE_MAPPING.md`](./MENU_IMAGE_MAPPING.md) para a correspondência entre produtos e fotos do cardápio salvo;
 - [`THIRD_PARTY_LICENSES.md`](./THIRD_PARTY_LICENSES.md) para dependências, ícones e proveniência;
 - [`OWNER_VALIDATION_CHECKLIST.md`](./OWNER_VALIDATION_CHECKLIST.md) para tudo que precisa de aprovação antes de publicar.
 

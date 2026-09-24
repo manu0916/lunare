@@ -41,13 +41,14 @@ Dependências transitivas também permanecem sob suas licenças individuais. Par
 
 - As fotografias, os vídeos e o emblema originais em `public/media` foram fornecidos pelo usuário em 23/09/2026 especificamente para esta demonstração.
 - Os WebP em `public/images/food` são conversões locais dos mesmos arquivos. A conversão não concede novos direitos de uso.
+- Os WebP em `public/images/menu` foram copiados localmente em 23/09/2026 de uma exportação da página pública `https://pedido.takeat.app/lunare` entregue pelo usuário. Não há hotlink; a cópia local também não concede novos direitos de uso.
 - A autorização comercial, a autoria e eventuais créditos obrigatórios **não foram verificados de forma independente**. O proprietário deve confirmá-los antes de qualquer publicação.
 - `public/icons/lunare-favicon.svg` é uma interpretação técnica provisória do emblema fornecido, criada para este protótipo. Ela não substitui o arquivo oficial da marca e precisa de aprovação.
 - O projeto usa fontes do sistema; não incorpora arquivos de fontes comerciais ou remotas.
 
 ## Referências externas
 
-Instagram e Takeat serviram como referências públicas de contexto. Nenhum asset dessas páginas é carregado pelo site, não existe hotlink e nenhum texto criativo longo, código ou interação proprietária foi copiado. Os links externos devem ser validados pelo proprietário.
+Instagram serviu como referência pública de contexto. O Takeat foi usado como fonte da correspondência entre nomes e fotografias do cardápio, a partir do HTML salvo pelo usuário. Nenhum asset é carregado dessas páginas em tempo de execução, não existe hotlink e nenhum código ou interação proprietária foi copiado. Os links externos devem ser validados pelo proprietário.
 
 ## Antes de redistribuir
 
@@ -56,4 +57,3 @@ Instagram e Takeat serviram como referências públicas de contexto. Nenhum asse
 - [ ] Obter autorização escrita para logo, fotografias e vídeos.
 - [ ] Confirmar créditos ou restrições aplicáveis às mídias.
 - [ ] Trocar ou aprovar o favicon provisório.
-

@@ -15,5 +15,8 @@
 | `lunare-filme-01.mp4` | Fornecido pelo usuário | Acervo, não carregado pela aplicação | Manter apenas se aprovado para uso futuro |
 | `lunare-filme-02.mp4` | Fornecido pelo usuário | Acervo, não carregado pela aplicação | Manter apenas se aprovado para uso futuro |
 | `lunare-filme-03.mp4` | Fornecido pelo usuário | Acervo, não carregado pela aplicação | Pode ser removido ou aplicado em campanha futura |
+| `public/images/menu/*.webp` | Cópias locais do cardápio Lunare salvo pelo usuário a partir do Takeat | Categorias e produtos do cardápio | Confirmar autorização comercial e correspondência final antes de publicar |
 
 As variantes WebP responsivas ficam em `public/images/food/w720` e `w1440`. Antes da publicação, preserve os originais fora do bundle, aprove os cortes e remova mídias que não forem usadas.
+
+As 38 imagens em `public/images/menu` foram extraídas da página salva `Lunare Restaurante.html` e de sua pasta acompanhante `Lunare Restaurante_files`, sem hotlink ou requisição ao Takeat em tempo de execução. O vínculo entre nomes, arquivos e fallbacks está documentado em `MENU_IMAGE_MAPPING.md`.
