@@ -1,0 +1,88 @@
+:focus-visible {
+  outline-color: #2747d7;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.eyebrow {
+  color: var(--color-silver);
+}
+
+.button-primary:hover {
+  background: #304dc9;
+}
+
+.prototype-bar {
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
+}
+
+/* The search input intentionally has no inner outline; the complete control gets the focus ring. */
+.menu-search-shell:focus-within {
+  border-color: var(--color-electric) !important;
+  box-shadow: 0 0 0 3px #2747d7, var(--shadow-card) !important;
+}
+
+.success-page {
+  padding-left: max(20px, env(safe-area-inset-left)) !important;
+  padding-right: max(20px, env(safe-area-inset-right)) !important;
+}
+
+.not-found-page {
+  min-height: calc(100dvh - 104px) !important;
+  padding-left: max(35px, env(safe-area-inset-left)) !important;
+  padding-right: max(35px, env(safe-area-inset-right)) !important;
+  padding-bottom: max(35px, env(safe-area-inset-bottom)) !important;
+}
+
+.app-shell > header,
+.home-page > section,
+.home-page > footer {
+  padding-left: max(24px, calc((100vw - var(--container)) / 2), env(safe-area-inset-left));
+  padding-right: max(24px, calc((100vw - var(--container)) / 2), env(safe-area-inset-right));
+}
+
+.app-shell > header > a,
+.home-page section header a,
+.home-page footer a {
+  min-height: 44px;
+}
+
+.home-page section header a,
+.home-page footer a {
+  display: flex;
+  align-items: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page section a:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 880px) {
+  .app-shell > header {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 600px) {
+  .home-page > section,
+  .home-page > footer,
+  #conteudo > div > section {
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 400px) {
+  header a[aria-label="Lunare — início"] > span {
+    display: none;
+  }
+}
+
+@media (max-width: 300px) {
+  .app-shell > header {
+    padding-inline: 10px;
+  }
+}

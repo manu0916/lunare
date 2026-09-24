@@ -1,0 +1,119 @@
+.overlay-sheet-body fieldset {
+  border: 0;
+  padding: 0;
+  margin: 22px 0;
+}
+
+.overlay-sheet-body fieldset legend {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.overlay-sheet-body fieldset legend em {
+  float: right;
+  font-size: 9px;
+  color: var(--color-cobalt);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.overlay-sheet-body fieldset label {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.overlay-sheet-body fieldset label:focus-within {
+  border-color: var(--color-electric);
+  outline: 3px solid color-mix(in srgb, var(--color-electric) 24%, transparent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.overlay-sheet-body fieldset label b {
+  font-size: 11px;
+}
+
+.overlay-sheet-body fieldset input {
+  accent-color: var(--color-electric);
+}
+
+.overlay-sheet-body > strong + p {
+  font-size: 10px;
+  color: var(--muted);
+  padding: 10px;
+  border-radius: 10px;
+  background: #f3f5f8;
+}
+
+.cart-footer p {
+  margin: 0;
+  color: var(--error);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.cart-footer a[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: .55;
+}
+
+.button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:focus-visible,
+.overlay-close:focus-visible,
+.drawer-head button:focus-visible,
+.cart-line button:focus-visible,
+.info-tabs button:focus-visible,
+.product-stepper button:focus-visible {
+  outline: 3px solid var(--color-electric);
+  outline-offset: 3px;
+}
+
+.cart-line button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 699px) {
+  .overlay-close {
+    left: max(16px, env(safe-area-inset-left)) !important;
+  }
+
+  .overlay-sheet-body {
+    padding-left: max(21px, env(safe-area-inset-left)) !important;
+    padding-right: max(21px, env(safe-area-inset-right)) !important;
+  }
+
+  .overlay-info-body,
+  .overlay-message {
+    padding-left: max(18px, env(safe-area-inset-left)) !important;
+    padding-right: max(18px, env(safe-area-inset-right)) !important;
+  }
+
+  .drawer-head,
+  .cart-footer,
+  .cart-lines {
+    padding-left: max(18px, env(safe-area-inset-left)) !important;
+    padding-right: max(18px, env(safe-area-inset-right)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay-panel,
+  .cart-line {
+    transform: none !important;
+  }
+}
