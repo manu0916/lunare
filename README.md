@@ -83,6 +83,7 @@ Responsabilidades importantes:
 4. Motion usa Anime.js nas coreografias principais, com tokens compartilhados, transform/opacity e alternativa quase imediata para `prefers-reduced-motion`.
 5. O fluxo inteiro explicita que é uma simulação. Cupom, taxa, pagamento e confirmação existem apenas para demonstrar a experiência.
 6. Informações não confirmadas são marcadas no modelo ou omitidas do SEO estruturado.
+7. O cardápio segue a direção “Editorial Bento Atelier”: hero dividido, marfim quente, azul meia-noite, dourado fosco e componentes compactos, aplicados ao catálogo inteiro — não a um único produto.
 
 ## SEO e compartilhamento
 
@@ -103,6 +104,10 @@ npm run build
 
 Sem essa variável, o navegador usa a origem atual. A remoção de `noindex,nofollow` deve ocorrer somente depois da aprovação do proprietário e da troca do protótipo por uma publicação oficial.
 
+### Publicação na Vercel
+
+O repositório inclui `vercel.json` com o preset do Vite e fallback de SPA para que acessos diretos a `/cardapio`, `/checkout` e `/pedido-demo/sucesso` abram o React Router corretamente. A Vercel pode usar o comando `npm run build` e o diretório de saída `dist`, detectados pelo preset. A pasta de evidências visuais `qa/` é mantida no projeto, mas excluída do pacote de deploy por `.vercelignore`.
+
 ## Conteúdo, assets e licenças
 
 As fotografias, vídeos e o emblema foram fornecidos pelo usuário para esta demonstração. As variantes WebP em `public/images/food` são derivados técnicos desses arquivos, sem alteração de titularidade. As fotos em `public/images/menu` vieram da página do Takeat salva e entregue pelo usuário; ficam locais no projeto e não usam hotlink. Autorização comercial, associação final de cada foto ao produto e versão definitiva da marca continuam pendentes.
@@ -113,6 +118,7 @@ Consulte:
 - [`MENU_IMAGE_MAPPING.md`](./MENU_IMAGE_MAPPING.md) para a correspondência entre produtos e fotos do cardápio salvo;
 - [`THIRD_PARTY_LICENSES.md`](./THIRD_PARTY_LICENSES.md) para dependências, ícones e proveniência;
 - [`OWNER_VALIDATION_CHECKLIST.md`](./OWNER_VALIDATION_CHECKLIST.md) para tudo que precisa de aprovação antes de publicar.
+- [`design-qa.md`](./design-qa.md) para a comparação visual, breakpoints inspecionados e evidências da revisão final.
 
 ## Limitações reais desta V1
 

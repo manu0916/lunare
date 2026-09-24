@@ -1,0 +1,274 @@
+[
+  {
+    "width": 360,
+    "viewport": [
+      360,
+      844
+    ],
+    "scrollWidth": 360,
+    "clientWidth": 360,
+    "horizontalOverflow": false,
+    "offenders": [
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 337,
+        "right": 423
+      },
+      {
+        "tag": "SPAN",
+        "cls": "_categoryVisual_1mv5j_10",
+        "left": 341,
+        "right": 373
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "left": 341,
+        "right": 373
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 379,
+        "right": 419
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 363,
+        "right": 397
+      },
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 430,
+        "right": 514
+      },
+      {
+        "tag": "SPAN",
+        "cls": "_categoryVisual_1mv5j_10",
+        "left": 434,
+        "right": 466
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "left": 434,
+        "right": 466
+      }
+    ],
+    "h1Count": 1,
+    "cards": 41,
+    "brokenImages": [],
+    "loadingFallback": false,
+    "reducedMotion": false,
+    "browserErrors": []
+  },
+  {
+    "width": 390,
+    "viewport": [
+      390,
+      844
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "offenders": [
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 337,
+        "right": 423
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 379,
+        "right": 419
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 363,
+        "right": 397
+      },
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 430,
+        "right": 514
+      },
+      {
+        "tag": "SPAN",
+        "cls": "_categoryVisual_1mv5j_10",
+        "left": 434,
+        "right": 466
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "left": 434,
+        "right": 466
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 472,
+        "right": 510
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 455,
+        "right": 488
+      }
+    ],
+    "h1Count": 1,
+    "cards": 41,
+    "brokenImages": [],
+    "loadingFallback": false,
+    "reducedMotion": false,
+    "browserErrors": []
+  },
+  {
+    "width": 768,
+    "viewport": [
+      768,
+      1024
+    ],
+    "scrollWidth": 753,
+    "clientWidth": 753,
+    "horizontalOverflow": false,
+    "offenders": [
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 702,
+        "right": 798
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 754,
+        "right": 790
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 730,
+        "right": 770
+      },
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 805,
+        "right": 898
+      },
+      {
+        "tag": "SPAN",
+        "cls": "_categoryVisual_1mv5j_10",
+        "left": 813,
+        "right": 849
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "left": 813,
+        "right": 849
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 857,
+        "right": 890
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 833,
+        "right": 871
+      }
+    ],
+    "h1Count": 1,
+    "cards": 41,
+    "brokenImages": [],
+    "loadingFallback": false,
+    "reducedMotion": false,
+    "browserErrors": []
+  },
+  {
+    "width": 1024,
+    "viewport": [
+      1024,
+      1024
+    ],
+    "scrollWidth": 1009,
+    "clientWidth": 1009,
+    "horizontalOverflow": false,
+    "offenders": [
+      {
+        "tag": "BUTTON",
+        "cls": "",
+        "left": 1005,
+        "right": 1102
+      },
+      {
+        "tag": "SPAN",
+        "cls": "_categoryVisual_1mv5j_10",
+        "left": 1013,
+        "right": 1049
+      },
+      {
+        "tag": "IMG",
+        "cls": "",
+        "left": 1013,
+        "right": 1049
+      },
+      {
+        "tag": "SPAN",
+        "cls": "",
+        "left": 1057,
+        "right": 1094
+      },
+      {
+        "tag": "I",
+        "cls": "",
+        "left": 1034,
+        "right": 1074
+      }
+    ],
+    "h1Count": 1,
+    "cards": 41,
+    "brokenImages": [],
+    "loadingFallback": false,
+    "reducedMotion": false,
+    "browserErrors": []
+  },
+  {
+    "width": 1440,
+    "viewport": [
+      1440,
+      1024
+    ],
+    "scrollWidth": 1425,
+    "clientWidth": 1425,
+    "horizontalOverflow": false,
+    "offenders": [],
+    "h1Count": 1,
+    "cards": 41,
+    "brokenImages": [],
+    "loadingFallback": false,
+    "reducedMotion": false,
+    "browserErrors": []
+  },
+  {
+    "width": 390,
+    "mode": "reduced-motion",
+    "reducedMotion": true,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "loadingFallback": false,
+    "browserErrors": []
+  }
+]

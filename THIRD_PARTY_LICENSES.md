@@ -44,6 +44,7 @@ Dependências transitivas também permanecem sob suas licenças individuais. Par
 - Os WebP em `public/images/menu` foram copiados localmente em 23/09/2026 de uma exportação da página pública `https://pedido.takeat.app/lunare` entregue pelo usuário. Não há hotlink; a cópia local também não concede novos direitos de uso.
 - A autorização comercial, a autoria e eventuais créditos obrigatórios **não foram verificados de forma independente**. O proprietário deve confirmá-los antes de qualquer publicação.
 - `public/icons/lunare-favicon.svg` é uma interpretação técnica provisória do emblema fornecido, criada para este protótipo. Ela não substitui o arquivo oficial da marca e precisa de aprovação.
+- `public/images/brand/washi-seigaiha-midnight.jpg` é uma textura abstrata gerada por IA para este protótipo. Não contém marca de terceiro nem tenta substituir o logotipo ou fotografias reais; sua aprovação de uso ainda cabe ao proprietário.
 - O projeto usa fontes do sistema; não incorpora arquivos de fontes comerciais ou remotas.
 
 ## Referências externas
