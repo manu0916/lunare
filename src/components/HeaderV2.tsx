@@ -1,9 +1,11 @@
-import { Info, Menu, ShoppingBag, X } from 'lucide-react';
+import { Clock3, Info, MapPin, Menu, ShoppingBag, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useReducedMotion } from '../hooks/useMotion';
 import { animateMotion, motionEasings, motionTokens, stagger } from '../lib/motion';
 import { useOrderStore } from '../store/useOrderStore';
+import { cartSubtotal } from '../utils/order';
+import { formatCurrency } from '../data/menu';
 import styles from './HeaderV2.module.css';
 
 export function HeaderV2() {
@@ -17,6 +19,7 @@ export function HeaderV2() {
   const setCartOpen = useOrderStore((state) => state.setCartOpen);
   const setInfoOpen = useOrderStore((state) => state.setInfoOpen);
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const subtotal = cartSubtotal(cart);
   const previousCount = useRef(count);
   const reduced = useReducedMotion();
 
@@ -76,16 +79,17 @@ export function HeaderV2() {
     </Link>
     <nav id="mobile-navigation" ref={navRef} className={`${styles.nav} ${mobileOpen ? styles.open : ''}`} aria-label="Navegação principal">
       <Link to="/#experiencia" onClick={() => setMobileOpen(false)}>Experiência</Link>
-      <Link to="/#favoritos" onClick={() => setMobileOpen(false)}>Favoritos</Link>
       <NavLink to="/cardapio" onClick={() => setMobileOpen(false)}>Cardápio</NavLink>
       <button type="button" onClick={() => { setInfoOpen(true); setMobileOpen(false); }}><Info size={16} /> Informações</button>
     </nav>
     <div className={styles.actions}>
+      <span className={styles.location}><MapPin aria-hidden="true" />Campos Gerais — MG</span>
+      <span className={styles.estimate}><Clock3 aria-hidden="true" />Previsão a confirmar</span>
       <span className={`${styles.status} ${status === 'open' ? styles.statusOpen : ''}`}><i />{status === 'open' ? 'Aberto' : 'Fechado'}</span>
       <button className={styles.cart} type="button" onClick={() => setCartOpen(true)} aria-label={`Abrir carrinho com ${count} itens`}>
-        <ShoppingBag size={19} />{count > 0 && <b ref={badgeRef}>{count}</b>}
+        <span className={styles.cartIcon}><ShoppingBag size={20} />{count > 0 && <b ref={badgeRef}>{count}</b>}</span>
+        <span className={styles.cartCopy}><strong>Seu pedido</strong><small>{count} {count === 1 ? 'item' : 'itens'} · {formatCurrency(subtotal)}</small></span>
       </button>
-      <Link className={styles.cta} to="/cardapio">Ver cardápio</Link>
       <button className={styles.menu} type="button" onClick={() => setMobileOpen((value) => !value)} aria-expanded={mobileOpen} aria-controls="mobile-navigation" aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}>{mobileOpen ? <X /> : <Menu />}</button>
     </div>
   </header>;

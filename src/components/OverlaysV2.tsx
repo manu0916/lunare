@@ -401,14 +401,19 @@ export function ProductDialog() {
         sizes="(max-width: 699px) 100vw, 600px"
         loading="eager"
       />
+      <div className={styles.productSignature} aria-hidden="true">
+        <img src="/media/lunare-emblema.jpg" alt="" width="34" height="34" />
+        <span>LUNARE<small>Restaurante</small></span>
+      </div>
       <div className={`${styles.sheetBody} overlay-sheet-body`}>
-        <small>{product.available ? 'Disponível na demonstração' : 'Indisponível'}</small>
-        <h2>{product.name}</h2>
+        <div className={styles.productTop}>
+          <div><small>{product.available ? 'Disponível na demonstração' : 'Indisponível'}</small><h2>{product.name}</h2></div>
+          <strong className={styles.price}>A partir de {formatCurrency(product.priceCents)}</strong>
+        </div>
         <p>{product.description}</p>
-        <strong className={styles.price}>A partir de {formatCurrency(product.priceCents)}</strong>
         <p className={styles.allergen}>{product.allergenNotes}</p>
         {product.variants.length > 0 && (
-          <fieldset className={styles.optionGroup} aria-required="true">
+          <fieldset className={`${styles.optionGroup} ${styles.variantGroup}`} aria-required="true">
             <legend>Escolha o tamanho <em>Obrigatório</em></legend>
             {product.variants.map((variant) => (
               <label key={variant.id}>

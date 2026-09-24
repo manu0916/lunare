@@ -1,12 +1,12 @@
 :root {
-  --color-night:#090d14;--color-deep-blue:#0d2c54;--color-cobalt:#2b4b8b;--color-electric:#3f5eea;--color-violet:#6d52ed;
-  --color-moon:#f6f7fb;--color-silver:#b8c2d1;--color-ink:#222;--color-salmon:#ff7a59;--color-gold:#d7b46a;
+  --color-night:#07131f;--color-deep-blue:#10283a;--color-cobalt:#24445c;--color-electric:#476f91;--color-violet:#655a78;
+  --color-moon:#f7f3eb;--color-silver:#b9c1c7;--color-ink:#122235;--color-salmon:#d97758;--color-gold:#c99b52;
   --cosmos-950:var(--color-night);--cosmos-900:#0b1d35;--cosmos-800:var(--color-deep-blue);--cobalt-700:var(--color-cobalt);--cobalt-500:var(--color-electric);
-  --nebula:var(--color-violet);--silver:var(--color-silver);--light:var(--color-moon);--ink:var(--color-ink);--muted:#667085;--line:#e2e7ef;
+  --nebula:var(--color-violet);--silver:var(--color-silver);--light:var(--color-moon);--ink:var(--color-ink);--muted:#65717c;--line:#ded8ce;
   --salmon:var(--color-salmon);--gold:var(--color-gold);--success:#187a62;--warning:#c56e24;--error:#a63d3d;--white:#fff;
-  --font-display:"Avenir Next","Segoe UI",sans-serif;--font-sans:"Inter","Manrope","Avenir Next","Segoe UI",sans-serif;
-  --container:1240px;--grid-gap:24px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;
-  --radius-sm:10px;--radius-md:18px;--radius-lg:28px;--border:1px solid var(--line);--shadow-deep:0 30px 80px rgba(0,7,24,.35);--shadow-card:0 14px 40px rgba(12,35,73,.08);
+  --font-display:Georgia,"Times New Roman",serif;--font-sans:"Avenir Next","Segoe UI",Arial,sans-serif;
+  --container:1340px;--grid-gap:24px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;
+  --radius-sm:12px;--radius-md:20px;--radius-lg:30px;--border:1px solid var(--line);--shadow-deep:0 32px 88px rgba(4,16,28,.3);--shadow-card:0 16px 48px rgba(22,37,51,.09);
   --z-header:50;--z-bottom-nav:60;--z-overlay:100;
   --motion-instant:120ms;--motion-micro:190ms;--motion-standard:320ms;--motion-reveal:600ms;--motion-intro:980ms;
   --ease-out-quad:cubic-bezier(.25,.46,.45,.94);--ease-out-expo:cubic-bezier(.16,1,.3,1);
